@@ -25,19 +25,9 @@ export const RegisterPage = () => {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-
-
   const {
-    formState,
-    displayName,
-    email,
-    password,
-    onInputChange,
-    isFormValid,
-    formStateValid,
-    displayNameValid,
-    emailValid,
-    passwordValid,
+    formState, displayName, email, password, onInputChange,
+    isFormValid, displayNameValid, emailValid, passwordValid,
   } = useForm(formData, formValidations);
 
   console.log(displayNameValid);
@@ -45,12 +35,13 @@ export const RegisterPage = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     setFormSubmitted(true);
-    if( !isFormValid) return;
-    dispatch(startCreatingUserWithEmailPassword(formState) );
+    if ( !isFormValid ) return;
+    dispatch(startCreatingUserWithEmailPassword(formState));
   };
 
   return (
     <AuthLayaout title="Crear Cuenta">
+      <h1>Formvalid: { isFormValid ? 'Valido' : 'Incorrecto'} </h1>
       <form onSubmit={onSubmit}>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
