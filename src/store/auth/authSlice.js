@@ -15,7 +15,7 @@ export const authSlice = createSlice({
             state.status = 'authenticated',
             state.uid = payload.uid;
             state.email = payload.email;
-            state.diplayName = payload.diplayName;
+            state.displayName = payload.displayName;
             state.photoURL = payload.photoURL;
             state.erroMessage = null;
 
@@ -24,9 +24,9 @@ export const authSlice = createSlice({
             state.status = 'not-authenticated',
             state.uid = null;
             state.email = null;
-            state.diplayName = null;
+            state.displayName = null;
             state.photoURL = null;
-            state.erroMessage = payload.erroMessage;
+            state.erroMessage = payload?.erroMessage;
 
         },
         chekingCredentials: (state) => {
