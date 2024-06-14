@@ -20,8 +20,8 @@ export const SideBar = ({ drawerWidth }) => {
             >
                 <Toolbar>
                     <Typography variant='h6' noWrap component='div' >
-                        {/* { displayName } */}
-                        {`Nombre: ${displayName}`}
+                        { displayName }
+                        {/* {`Nombre: ${displayName}`} */}
                     </Typography>
                 </Toolbar>
                 <Divider />
