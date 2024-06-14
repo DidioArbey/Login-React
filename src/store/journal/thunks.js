@@ -1,9 +1,11 @@
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from "../../firebase/config";
+import { addNewEMptyNote, savingNewNote, setActiveNote } from './'
 
 
 export const startNewNote = () => {
     return async (dispatch, getState) => {
+        dispatch(savingNewNote());
         //obtener uid
         const { uid } = getState().auth;
 
@@ -14,10 +16,14 @@ export const startNewNote = () => {
         }
 
         const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
-        const setDocResp = await setDoc(newDoc, newNote);
+        await setDoc(newDoc, newNote);
 
-        console.log({ newDoc, setDocResp });
+        newNote.id = newDoc.id;
         //dispatch
+        //insertar la nota
+        dispatch(addNewEMptyNote(newNote));
+        //activar la nota
+        dispatch(setActiveNote(newNote));
     }
 }
 
